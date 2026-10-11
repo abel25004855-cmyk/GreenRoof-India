@@ -1,0 +1,38 @@
+GREENROOF INDIA — DEMO GUIDE
+
+Suggested demo order (about 2 minutes)
+1. Explain that the dashboard requests current weather from Open-Meteo for 15 representative Indian cities.
+2. Click Refresh data and point out the current temperature, humidity, average, chart, and city table. Explain that “Rain today” is the daily precipitation total, distinct from current precipitation.
+3. Click a marker on the map to inspect the city's reading. The map requires internet access.
+4. Click “7-day temperature” in the top navigation, select a city, and show the forecast daily maximum and minimum temperatures.
+5. Click “Compare cities” in the top navigation, choose two cities, and click Compare. Explain that the values come from the latest current-weather readings loaded into the dashboard.
+6. Explain the priority score transparently: 60% current-heat component + 40% manually assigned urban-density proxy, less a small current-precipitation adjustment. It is only an illustrative screening score.
+
+60–90 SECOND PRESENTATION SCRIPT
+“Our project is GreenRoof India. The physical model demonstrates how a green roof may help reduce heat transfer into a building. We added a BCA Data Analytics component as a web dashboard. It retrieves current temperature, humidity, current precipitation and the daily precipitation total for representative Indian cities using the Open-Meteo API. The map and chart help us explore locations. The forecast panel displays the next seven days of forecast highs and lows, and the comparison panel lets us compare two cities. The priority score is a transparent prototype heuristic, not an official or scientifically validated rating. It helps demonstrate data processing and screening, but it does not prove which city should install green roofs first.”
+
+POSSIBLE QUESTIONS
+Q: Is the data live?
+A: The app requests current readings from Open-Meteo when it loads or when Refresh is clicked. The seven-day forecast is requested for the selected city.
+
+Q: Are forecast temperatures guaranteed?
+A: No. They are weather-model forecasts and can change.
+
+Q: Is the priority score scientifically validated?
+A: No. It is an illustrative educational heuristic. A real model needs validated weights and additional data such as long-term climate, land-surface temperature, roof availability, water access and installation costs.
+
+Q: Why cities instead of states?
+A: Conditions vary within a state. These are representative city points, not state-wide averages.
+
+Q: What is the BCA component?
+A: API integration, data retrieval, data processing, a scoring algorithm, interactive mapping, charting, forecast visualization, and side-by-side data comparison.
+
+HUMIDITY REFRESH NOTE
+Click Refresh data to request current temperature, relative humidity, precipitation and apparent temperature together from Open-Meteo. The page avoids browser caching and shows humidity to one decimal place. If humidity does not change after refreshing, the provider may still be returning the same latest reading; that does not mean humidity is hardcoded.
+
+
+PRECIPITATION EXPLANATION
+- Current precipitation (mm) is the current-condition value returned by the weather API.
+- Rain today (mm) is the API daily precipitation sum for the local calendar day.
+- A value of 0 mm is a valid reading and means the API reports no precipitation for that period; it is not a missing value.
+- Data refreshes when the page loads or Refresh is clicked. The values update when Open-Meteo provides a newer reading, not necessarily every second.
